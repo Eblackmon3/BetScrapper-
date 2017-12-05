@@ -2,6 +2,10 @@ group 'RNS'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin:'application'
+
+mainClassName = "Main"
+applicationName = "bet-scraper"
 
 sourceCompatibility = 1.8
 
