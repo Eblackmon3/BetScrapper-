@@ -27,16 +27,24 @@ public class ScheduledTasks {
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("+12406247881"),
                     placeBetCurrent).create();
+            Message message2=Message.creator(new PhoneNumber("7037856222"),
+                    new PhoneNumber("+12406247881"),
+                    placeBetCurrent).create();
 
             System.out.println(message.getSid());
+            System.out.println(message2.getSid());
 
         }
         if(placeBetFuture!=null){
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("+12406247881"),
-                    placeBetFuture).create();
+                    placeBetCurrent).create();
+            Message message2=Message.creator(new PhoneNumber("7037856222"),
+                    new PhoneNumber("+12406247881"),
+                    placeBetCurrent).create();
 
             System.out.println(message.getSid());
+            System.out.println(message2.getSid());
 
         };
 

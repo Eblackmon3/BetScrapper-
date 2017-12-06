@@ -8,7 +8,7 @@ public class ScrapperController {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from Spring Boot!";
+        return "Finding Bets Now";
     }
 
 }
