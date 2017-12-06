@@ -18,9 +18,7 @@ jar {
         attributes(
                 'Main-Class': 'Application.Main'
         )
-        from {
-            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-        }
+
     }
 }
 
