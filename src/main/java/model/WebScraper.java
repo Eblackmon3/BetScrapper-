@@ -26,10 +26,16 @@ public class WebScraper {
     Element colBasketballEvents;
 
     public WebScraper(){
+
+        AccountLogin login= new AccountLogin();
+       Document tempDoc= login.getPage("https://login.sportsbookreview.com/user-login",
+                "https://www.sportsbookreview.com/betting-odds/money-line");
+
         try {
-            url = "https://www.sportsbookreview.com/betting-odds/money-line/?sID=qczgbhkmzgivdcy5kinzfagk&u=927380&s=bfaa76511789d8249cb3c6c1c0c15ad0";
+            url = "https://www.sportsbookreview.com/betting-odds/money-line/?sID=qczgbhkmzgivdcy5kinzfagk&sID=nsdnmystjojqh5tb25ftdbbb";
             //Get the associated sporting events
-            doc = Jsoup.connect(url).timeout(10000).validateTLSCertificates(false).get();
+            //doc = Jsoup.connect(url).timeout(10000).validateTLSCertificates(false).get();
+            doc=tempDoc;
             footballEvents = doc.getElementById("OddsGridModule_16");
             basketballEvents = doc.getElementById("OddsGridModule_5");
             hockeyEvents = doc.getElementById("OddsGridModule_7");
@@ -44,6 +50,21 @@ public class WebScraper {
  Get the games that are currrently happening
  */
     public String scrapeCurrGames(){
+        String teamOne="";
+        String teamTwo="";
+        String teamOneOdds="";
+        String teamTwoOdds="";
+        Booky odds= null;
+        Event nbaEvent=null;
+        Event nflEvent=null;
+        Event hockeyEvent=null;
+        Event colBballEvent=null;
+
+
+        ArrayList<Event>nflList= new ArrayList<>();
+        ArrayList<Event>nbaList= new ArrayList<>();
+        ArrayList<Event>hockeyList= new ArrayList<>();
+        ArrayList<Event>collegeList= new ArrayList<>();
         //Just checking to make sure that we are grabbing all of the games
         System.out.println("Current");
         try{
@@ -51,23 +72,251 @@ public class WebScraper {
                 Elements currNFL=footballEvents.getElementsByClass("content-in-progress ").get(0).
                         getElementsByClass("event-holder holder-in-progress");
                 System.out.println(currNFL.size());
+                for(Element game:currNFL){
+                    //Grab the team names
+                    teamOne=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(0).text();
+                    teamTwo=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(1).text();
+                    nflEvent=new Event(teamOne,teamTwo);
+                    //Go through and get the odds
+                    if(game.getElementsByClass("el-div eventLine-opener")!=null){
+                        teamOneOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+                        odds= new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        odds.setBookyName("Opener");
+                        nflEvent.addBookingAgencies(odds);
+                        nflList.add(nflEvent);
+                        System.out.println(odds);
+                    }
+
+                    for(Element books:game.getElementsByClass("el-div eventLine-book")){
+                        teamOneOdds=books.getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=books.getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+
+
+                        odds=new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        nflEvent.addBookingAgencies(odds);
+                        System.out.println(odds);
+
+                    }
+
+
+                }
 
             }
             if(basketballEvents!=null&&basketballEvents.getElementsByClass("content-in-progress ")!=null){
                 Elements currNBA=basketballEvents.getElementsByClass("content-in-progress ").get(0).
                         getElementsByClass("event-holder holder-in-progress");
                 System.out.println(currNBA.size());
+                for(Element game:currNBA){
+                    //Grab the team names
+                    teamOne=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(0).text();
+                    teamTwo=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(1).text();
+                    nbaEvent=new Event(teamOne,teamTwo);
+                    //Go through and get the odds
+                    if(game.getElementsByClass("el-div eventLine-opener")!=null){
+                        teamOneOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+                        odds= new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        odds.setBookyName("Opener");
+                        nbaEvent.addBookingAgencies(odds);
+                        nbaList.add(nbaEvent);
+                        System.out.println(odds);
+                    }
+
+                    for(Element books:game.getElementsByClass("el-div eventLine-book")){
+                        teamOneOdds=books.getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=books.getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+
+
+                        odds=new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        nbaEvent.addBookingAgencies(odds);
+                        System.out.println(odds);
+
+                    }
+
+
+                }
 
             }if(hockeyEvents!=null&&hockeyEvents.getElementsByClass("content-in-progress ")!=null){
                 Elements currHockey=hockeyEvents.getElementsByClass("content-in-progress ").get(0).
                         getElementsByClass("event-holder holder-in-progress");
                 System.out.println(currHockey.size());
+                for(Element game:currHockey){
+                    //Grab the team names
+                    teamOne=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(0).text();
+                    teamTwo=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(1).text();
+                    hockeyEvent=new Event(teamOne,teamTwo);
+                    //Go through and get the odds
+                    if(game.getElementsByClass("el-div eventLine-opener")!=null){
+                        teamOneOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+                        odds= new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        odds.setBookyName("Opener");
+                        hockeyEvent.addBookingAgencies(odds);
+                        hockeyList.add(hockeyEvent);
+                        System.out.println(odds);
+                    }
+
+                    for(Element books:game.getElementsByClass("el-div eventLine-book")){
+                        teamOneOdds=books.getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=books.getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+
+
+                        odds=new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        hockeyEvent.addBookingAgencies(odds);
+                        System.out.println(odds);
+
+                    }
+
+
+                }
 
             }if(colBasketballEvents!=null&&colBasketballEvents.getElementsByClass("content-in-progress ")!=null){
                 Elements currColBall=colBasketballEvents.getElementsByClass("content-in-progress ").get(0)
                         .getElementsByClass("event-holder holder-in-progress");
                 System.out.println(currColBall.size());
+                for(Element game:currColBall){
+                    //Grab the team names
+                    teamOne=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(0).text();
+                    teamTwo=game.getElementsByClass("el-div eventLine-team").
+                            get(0).getElementsByClass("team-name").get(1).text();
+                    colBballEvent=new Event(teamOne,teamTwo);
+                    //Go through and get the odds
+                    if(game.getElementsByClass("el-div eventLine-opener")!=null){
+                        teamOneOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=game.getElementsByClass("el-div eventLine-opener")
+                                .get(0).getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+                        odds= new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        odds.setBookyName("Opener");
+                        colBballEvent.addBookingAgencies(odds);
+                        collegeList.add(colBballEvent);
+                        System.out.println(odds);
+                    }
 
+                    for(Element books:game.getElementsByClass("el-div eventLine-book")){
+                        teamOneOdds=books.getElementsByClass("eventLine-book-value").get(0).text();
+                        teamTwoOdds=books.getElementsByClass("eventLine-book-value").get(1).text();
+                        if(teamOneOdds.equals("")){
+                            teamOneOdds="0";
+                        }
+                        if(teamTwoOdds.equals("")){
+                            teamTwoOdds="0";
+                        }
+
+
+                        odds=new Booky(Integer.parseInt(teamOneOdds),
+                                Integer.parseInt(teamTwoOdds),
+                                teamOne,
+                                teamTwo);
+                        colBballEvent.addBookingAgencies(odds);
+                        System.out.println(odds);
+
+                    }
+
+
+                }
+
+            }
+            for(Event nbaGame: nbaList){
+                nbaGame.calcLowHigh();
+                if(nbaGame.placeBet()!=null){
+                    return "Check bets for " + nbaGame;
+                }
+            }
+            for(Event nflGame: nflList){
+                nflGame.calcLowHigh();
+                if(nflGame.placeBet()!=null){
+                    return "Check bets for "+nflGame;
+                }
+            }
+            for(Event hockeyGame: hockeyList){
+                hockeyGame.calcLowHigh();
+                if(hockeyGame.placeBet()!=null){
+                    return "Checks bets for "+hockeyGame;
+                }
+            }
+            for(Event colGame: collegeList){
+                colGame.calcLowHigh();
+                if(colGame.placeBet()!=null){
+                    return "Checks bets for "+ colGame;
+                }
             }
 
 
@@ -186,6 +435,7 @@ public class WebScraper {
                           teamTwo);
                   odds.setBookyName("Opener");
                   nbaEvent.addBookingAgencies(odds);
+                  nbaList.add(nbaEvent);
                   System.out.println(odds);
               }
 
@@ -205,7 +455,6 @@ public class WebScraper {
                           teamOne,
                           teamTwo);
                   nbaEvent.addBookingAgencies(odds);
-                  nbaList.add(nbaEvent);
                   System.out.println(odds);
 
               }
@@ -243,6 +492,7 @@ public class WebScraper {
                           teamTwo);
                   odds.setBookyName("Opener");
                   hockeyEvent.addBookingAgencies(odds);
+                  hockeyList.add(hockeyEvent);
                   System.out.println(odds);
               }
 
@@ -262,7 +512,6 @@ public class WebScraper {
                           teamOne,
                           teamTwo);
                   hockeyEvent.addBookingAgencies(odds);
-                  hockeyList.add(hockeyEvent);
                   System.out.println(odds);
 
               }
@@ -300,6 +549,7 @@ public class WebScraper {
                           teamTwo);
                   odds.setBookyName("Opener");
                   colBballEvent.addBookingAgencies(odds);
+                  collegeList.add(colBballEvent);
                   System.out.println(odds);
               }
 
@@ -319,7 +569,6 @@ public class WebScraper {
                           teamOne,
                           teamTwo);
                   colBballEvent.addBookingAgencies(odds);
-                  collegeList.add(colBballEvent);
                   System.out.println(odds);
 
               }
@@ -328,28 +577,28 @@ public class WebScraper {
           }
 
       }
-        for(Event nbaGame: nbaList){
+      for(Event nbaGame: nbaList){
           nbaGame.calcLowHigh();
-          if(nbaGame.placeBet()){
-              return "Check bets for" + nbaGame;
+          if(nbaGame.placeBet()!=null){
+              return "Check bets for " + nbaGame;
           }
-        }
+      }
       for(Event nflGame: nflList){
           nflGame.calcLowHigh();
-          if(nflGame.placeBet()){
+          if(nflGame.placeBet()!=null){
               return "Check bets for "+nflGame;
           }
       }
       for(Event hockeyGame: hockeyList){
           hockeyGame.calcLowHigh();
-          if(hockeyGame.placeBet()){
+          if(hockeyGame.placeBet()!=null){
               return "Checks bets for "+hockeyGame;
           }
       }
       for(Event colGame: collegeList){
           colGame.calcLowHigh();
-          if(colGame.placeBet()){
-              return "Checks bets for"+ colGame;
+          if(colGame.placeBet()!=null){
+              return "Checks bets for "+ colGame;
           }
       }
 

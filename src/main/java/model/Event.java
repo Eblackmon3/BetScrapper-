@@ -78,19 +78,29 @@ public class Event {
         int teamOneHighest=Integer.MIN_VALUE;
         int teamTwoLowest=Integer.MAX_VALUE;
         int teamTwoHighest=Integer.MIN_VALUE;
+        int i=0;
         for(Booky currBooky: bookingAgencies){
             if(currBooky.getTeamOneOdds()<teamOneLowest){
-                teamOneLowest=currBooky.getTeamOneOdds();
+                if(i!=0) {
+                    teamOneLowest = currBooky.getTeamOneOdds();
+                }
             }
             if(currBooky.getTeamOneOdds()>teamOneHighest){
-                teamOneHighest=currBooky.getTeamOneOdds();
+                if(i!=0) {
+                    teamOneHighest = currBooky.getTeamOneOdds();
+                }
             }
             if(currBooky.getTeamTwoOdds()<teamTwoLowest){
-                teamTwoLowest=currBooky.getTeamTwoOdds();
+                if(i!=0) {
+                    teamTwoLowest = currBooky.getTeamTwoOdds();
+                }
             }
             if(currBooky.getTeamTwoOdds()>teamTwoHighest){
-                teamTwoHighest=currBooky.getTeamTwoOdds();
+                if(i!=0) {
+                    teamTwoHighest = currBooky.getTeamTwoOdds();
+                }
             }
+            i++;
         }
         this.teamOneLowest=teamOneLowest;
         this.teamOneHighest=teamOneHighest;
@@ -99,25 +109,41 @@ public class Event {
     }
 
 
-    public boolean placeBet(){
-        if(teamOneLowest<0){
-            for(Booky game:bookingAgencies){
-                if(game.getTeamTwoOdds()>Math.abs(teamOneLowest)){
-                    return true;
-                }
+    public String placeBet(){
+        int [] teamOneOdds= new  int [bookingAgencies.size()];
+        int []  teamTwoOdds=  new  int [bookingAgencies.size()];
+        int i=0;
+        bookingAgencies.remove(0);
+        for(Booky game:bookingAgencies){
+            teamOneOdds[i]=bookingAgencies.get(i).getTeamOneOdds();
+            teamTwoOdds[i]=bookingAgencies.get(i).getTeamTwoOdds();
+            i++;
+        }
 
+        if(teamOneLowest<0){
+            for(int j=0; j<teamOneOdds.length;j++){
+                for(int k=j;k<teamTwoOdds.length;k++){
+                    if(((Math.abs(teamOneOdds[j])<teamTwoOdds[k])||teamOneOdds[j]>0)&&teamOneOdds[j]!=0){
+                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)) {
+                            return "Column:" +j + " and Column:"+ k;
+                        }
+                    }
+                }
             }
 
         }else{
-            for(Booky game:bookingAgencies){
-                if(game.getTeamOneOdds()>Math.abs(teamTwoLowest)){
-                    return true;
+            for(int j=0; j<teamTwoOdds.length;j++){
+                for(int k=j;k<teamOneOdds.length;k++){
+                    if((Math.abs(teamTwoOdds[j])<teamOneOdds[k]||teamTwoOdds[j]>0)&& teamTwoOdds[j]!=0){
+                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)) {
+                            return "Column:" +j + " and Column:"+ k;
+                        }
+                    }
                 }
-
             }
 
         }
-        return false;
+        return null;
     }
 
 
