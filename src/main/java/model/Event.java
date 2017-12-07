@@ -125,7 +125,7 @@ public class Event {
                 for(int k=j;k<teamTwoOdds.length;k++){
                     if(((Math.abs(teamOneOdds[j])<teamTwoOdds[k])||teamOneOdds[j]>0)&&teamOneOdds[j]!=0){
                         if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)) {
-                            return "Column:" +j + " and Column:"+ k;
+                            return " Team one odds:"+teamOneOdds[j]+" Team two odds:"+teamTwoOdds[k];
                         }
                     }
                 }
@@ -136,7 +136,7 @@ public class Event {
                 for(int k=j;k<teamOneOdds.length;k++){
                     if((Math.abs(teamTwoOdds[j])<teamOneOdds[k]||teamTwoOdds[j]>0)&& teamTwoOdds[j]!=0){
                         if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)) {
-                            return "Column:" +j + " and Column:"+ k;
+                            return " Team one odds:"+teamTwoOdds[j]+" Team two odds:"+teamTwoOdds[k];
                         }
                     }
                 }
