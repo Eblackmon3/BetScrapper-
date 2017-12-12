@@ -126,7 +126,7 @@ public class Event {
             for(int j=0; j<teamOneOdds.length;j++){
                 for(int k=j;k<teamTwoOdds.length;k++){
                     if(((Math.abs(teamOneOdds[j])<teamTwoOdds[k])||teamOneOdds[j]>0)&&teamOneOdds[j]!=0){
-                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)&&(teamTwoOdds[k])>0) {
+                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)&&(teamTwoOdds[k]>0)) {
 
                             bets.add(" Team one odds:"+teamOneOdds[j]+" Team two odds:"+teamTwoOdds[k]);
                         }
@@ -138,7 +138,7 @@ public class Event {
             for(int j=0; j<teamTwoOdds.length;j++){
                 for(int k=j;k<teamOneOdds.length;k++){
                     if((Math.abs(teamTwoOdds[j])<teamOneOdds[k]||teamTwoOdds[j]>0)&& teamTwoOdds[j]!=0){
-                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)&&(teamOneOdds[k])>0) {
+                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)&&(teamOneOdds[k]>0)) {
                             bets.add(" Team one odds:"+teamTwoOdds[j]+" Team two odds:"+teamTwoOdds[k]);
                         }
                     }
