@@ -298,25 +298,25 @@ public class WebScraper {
             for(Event nbaGame: nbaList){
                 nbaGame.calcLowHigh();
                 if(nbaGame.placeBet().size()>0){
-                    bets.add("Check bets for " + nbaGame+" "+nbaGame.placeBet());
+                    bets.add("Check bets for " + nbaGame);
                 }
             }
             for(Event nflGame: nflList){
                 nflGame.calcLowHigh();
                 if(nflGame.placeBet().size()>0){
-                    bets.add("Check bets for "+nflGame+" "+nflGame.placeBet());
+                    bets.add("Check bets for "+nflGame);
                 }
             }
             for(Event hockeyGame: hockeyList){
                 hockeyGame.calcLowHigh();
                 if(hockeyGame.placeBet().size()>0){
-                    bets.add("Checks bets for "+hockeyGame+" "+hockeyGame.placeBet());
+                    bets.add("Checks bets for "+hockeyGame);
                 }
             }
             for(Event colGame: collegeList){
                 colGame.calcLowHigh();
                 if(colGame.placeBet().size()>0){
-                    bets.add("Checks bets for "+ colGame+" "+colGame.placeBet());
+                    bets.add("Checks bets for "+ colGame);
                 }
             }
 
@@ -580,25 +580,25 @@ public class WebScraper {
       for(Event nbaGame: nbaList){
           nbaGame.calcLowHigh();
           if(nbaGame.placeBet().size()>0){
-              bets.add("Check bets for " + nbaGame+" "+nbaGame.placeBet());
+              bets.add("Check bets for " + nbaGame);
           }
       }
       for(Event nflGame: nflList){
           nflGame.calcLowHigh();
           if(nflGame.placeBet().size()>0){
-              bets.add("Check bets for "+nflGame+" "+nflGame.placeBet());
+              bets.add("Check bets for "+nflGame);
           }
       }
       for(Event hockeyGame: hockeyList){
           hockeyGame.calcLowHigh();
           if(hockeyGame.placeBet().size()>0){
-              bets.add("Checks bets for "+hockeyGame+" "+hockeyGame.placeBet());
+              bets.add("Checks bets for "+hockeyGame);
           }
       }
       for(Event colGame: collegeList){
           colGame.calcLowHigh();
           if(colGame.placeBet().size()>0){
-              bets.add("Checks bets for "+ colGame+" "+colGame.placeBet());
+              bets.add("Checks bets for "+ colGame);
           }
       }
 

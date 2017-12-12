@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c234b6d-0d88-472e-9c21-c7785a77c658" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Application/ScheduledTasks.class" afterPath="$PROJECT_DIR$/out/production/classes/Application/ScheduledTasks.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/model/AccountLogin.class" afterPath="$PROJECT_DIR$/out/production/classes/model/AccountLogin.class" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" afterPath="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/AccountLogin.java" afterPath="$PROJECT_DIR$/src/main/java/model/AccountLogin.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Event.java" afterPath="$PROJECT_DIR$/src/main/java/model/Event.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/WebScraper.java" afterPath="$PROJECT_DIR$/src/main/java/model/WebScraper.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -33,8 +27,8 @@
       <file leaf-file-name="WebScraper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/WebScraper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-98">
-              <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+            <state relative-caret-position="213">
+              <caret line="318" column="56" lean-forward="false" selection-start-line="318" selection-start-column="56" selection-end-line="318" selection-end-column="56" />
               <folding>
                 <element signature="e#588#596#0" expanded="true" />
               </folding>
@@ -45,7 +39,7 @@
       <file leaf-file-name="ScheduledTasks.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-202">
+            <state relative-caret-position="78">
               <caret line="43" column="57" lean-forward="true" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
               <folding>
                 <element signature="e#2641#2642#0" expanded="true" />
@@ -68,7 +62,7 @@
       <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
+            <state relative-caret-position="-75">
               <caret line="112" column="40" lean-forward="false" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
               <folding>
                 <element signature="e#642#643#0" expanded="true" />
@@ -559,9 +553,9 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/Application/ScrapperController.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/AccountLogin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/WebScraper.java" />
         <option value="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Event.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/WebScraper.java" />
       </list>
     </option>
   </component>
@@ -807,7 +801,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43165466" sideWeight="0.50285715" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26636904" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26636904" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1262,7 +1256,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
+        <state relative-caret-position="-75">
           <caret line="112" column="40" lean-forward="false" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
           <folding>
             <element signature="e#642#643#0" expanded="true" />
@@ -1283,7 +1277,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-202">
+        <state relative-caret-position="78">
           <caret line="43" column="57" lean-forward="true" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
           <folding>
             <element signature="e#2641#2642#0" expanded="true" />
@@ -1294,8 +1288,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/WebScraper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98">
-          <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+        <state relative-caret-position="213">
+          <caret line="318" column="56" lean-forward="false" selection-start-line="318" selection-start-column="56" selection-end-line="318" selection-end-column="56" />
           <folding>
             <element signature="e#588#596#0" expanded="true" />
           </folding>
