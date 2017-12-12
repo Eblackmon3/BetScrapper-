@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.print.Book;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Event {
@@ -109,10 +110,11 @@ public class Event {
     }
 
 
-    public String placeBet(){
+    public ArrayList<String> placeBet(){
         int [] teamOneOdds= new  int [bookingAgencies.size()];
         int []  teamTwoOdds=  new  int [bookingAgencies.size()];
         int i=0;
+        ArrayList<String> bets= new ArrayList<>();
         bookingAgencies.remove(0);
         for(Booky game:bookingAgencies){
             teamOneOdds[i]=bookingAgencies.get(i).getTeamOneOdds();
@@ -124,8 +126,9 @@ public class Event {
             for(int j=0; j<teamOneOdds.length;j++){
                 for(int k=j;k<teamTwoOdds.length;k++){
                     if(((Math.abs(teamOneOdds[j])<teamTwoOdds[k])||teamOneOdds[j]>0)&&teamOneOdds[j]!=0){
-                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)) {
-                            return " Team one odds:"+teamOneOdds[j]+" Team two odds:"+teamTwoOdds[k];
+                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)&&(teamTwoOdds[k])>0) {
+
+                            bets.add(" Team one odds:"+teamOneOdds[j]+" Team two odds:"+teamTwoOdds[k]);
                         }
                     }
                 }
@@ -135,15 +138,15 @@ public class Event {
             for(int j=0; j<teamTwoOdds.length;j++){
                 for(int k=j;k<teamOneOdds.length;k++){
                     if((Math.abs(teamTwoOdds[j])<teamOneOdds[k]||teamTwoOdds[j]>0)&& teamTwoOdds[j]!=0){
-                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)) {
-                            return " Team one odds:"+teamTwoOdds[j]+" Team two odds:"+teamTwoOdds[k];
+                        if((j!=0&&j!=2&&j!=9)&&(k!=0&&k!=2&&k!=9)&&(teamOneOdds[k])>0) {
+                            bets.add(" Team one odds:"+teamTwoOdds[j]+" Team two odds:"+teamTwoOdds[k]);
                         }
                     }
                 }
             }
 
         }
-        return null;
+        return bets;
     }
 
 

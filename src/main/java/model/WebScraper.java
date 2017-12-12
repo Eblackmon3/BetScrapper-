@@ -17,6 +17,7 @@ public class WebScraper {
     Elements upcomingNBA= new Elements();
     Elements upcomingHockey= new Elements();
     Elements upcomingColBall= new Elements();
+    ArrayList<String>bets= new ArrayList<String>();
 
     String url="";
     Document doc;
@@ -49,7 +50,7 @@ public class WebScraper {
 /*
  Get the games that are currrently happening
  */
-    public String scrapeCurrGames(){
+    public ArrayList<String> scrapeCurrGames(){
         String teamOne="";
         String teamTwo="";
         String teamOneOdds="";
@@ -296,26 +297,26 @@ public class WebScraper {
             }
             for(Event nbaGame: nbaList){
                 nbaGame.calcLowHigh();
-                if(nbaGame.placeBet()!=null){
-                    return "Check bets for " + nbaGame+" "+nbaGame.placeBet();
+                if(nbaGame.placeBet().size()>0){
+                    bets.add("Check bets for " + nbaGame+" "+nbaGame.placeBet());
                 }
             }
             for(Event nflGame: nflList){
                 nflGame.calcLowHigh();
-                if(nflGame.placeBet()!=null){
-                    return "Check bets for "+nflGame+" "+nflGame.placeBet();
+                if(nflGame.placeBet().size()>0){
+                    bets.add("Check bets for "+nflGame+" "+nflGame.placeBet());
                 }
             }
             for(Event hockeyGame: hockeyList){
                 hockeyGame.calcLowHigh();
-                if(hockeyGame.placeBet()!=null){
-                    return "Checks bets for "+hockeyGame+" "+hockeyGame.placeBet();
+                if(hockeyGame.placeBet().size()>0){
+                    bets.add("Checks bets for "+hockeyGame+" "+hockeyGame.placeBet());
                 }
             }
             for(Event colGame: collegeList){
                 colGame.calcLowHigh();
-                if(colGame.placeBet()!=null){
-                    return "Checks bets for "+ colGame+" "+colGame.placeBet();
+                if(colGame.placeBet().size()>0){
+                    bets.add("Checks bets for "+ colGame+" "+colGame.placeBet());
                 }
             }
 
@@ -326,10 +327,10 @@ public class WebScraper {
             return null;
 
         }
-        return null;
+        return bets;
     }
 
-    public String scrapeFutureGames(){
+    public ArrayList<String> scrapeFutureGames(){
         String teamOne="";
         String teamTwo="";
         String teamOneOdds="";
@@ -578,26 +579,26 @@ public class WebScraper {
       }
       for(Event nbaGame: nbaList){
           nbaGame.calcLowHigh();
-          if(nbaGame.placeBet()!=null){
-              return "Check bets for " + nbaGame+" "+nbaGame.placeBet();
+          if(nbaGame.placeBet().size()>0){
+              bets.add("Check bets for " + nbaGame+" "+nbaGame.placeBet());
           }
       }
       for(Event nflGame: nflList){
           nflGame.calcLowHigh();
-          if(nflGame.placeBet()!=null){
-              return "Check bets for "+nflGame+" "+nflGame.placeBet();
+          if(nflGame.placeBet().size()>0){
+              bets.add("Check bets for "+nflGame+" "+nflGame.placeBet());
           }
       }
       for(Event hockeyGame: hockeyList){
           hockeyGame.calcLowHigh();
-          if(hockeyGame.placeBet()!=null){
-              return "Checks bets for "+hockeyGame+" "+hockeyGame.placeBet();
+          if(hockeyGame.placeBet().size()>0){
+              bets.add("Checks bets for "+hockeyGame+" "+hockeyGame.placeBet());
           }
       }
       for(Event colGame: collegeList){
           colGame.calcLowHigh();
-          if(colGame.placeBet()!=null){
-              return "Checks bets for "+ colGame+" "+colGame.placeBet();
+          if(colGame.placeBet().size()>0){
+              bets.add("Checks bets for "+ colGame+" "+colGame.placeBet());
           }
       }
 
@@ -609,6 +610,6 @@ public class WebScraper {
   }
 
 
-        return null;
+        return bets;
     }
 }

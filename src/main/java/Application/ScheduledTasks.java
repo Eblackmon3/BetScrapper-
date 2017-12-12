@@ -24,43 +24,45 @@ public class ScheduledTasks {
     public void scrapeBets(){
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         WebScraper scrapeGames = new WebScraper();
-        String placeBetCurrent=null;
-        String placeBetFuture=null;
+        ArrayList<String> placeBetCurrent=null;
+        ArrayList<String> placeBetFuture=null;
 
         placeBetCurrent=scrapeGames.scrapeCurrGames();
         placeBetFuture=scrapeGames.scrapeFutureGames();
 
 
-        if(placeBetCurrent!=null&&!placeBetCheck.containsKey(placeBetCurrent)&&placeBetCheck.get(placeBetCurrent)!=null&&
-                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetCurrent))){
+        if(placeBetCurrent.size()>0&&!placeBetCheck.containsKey(placeBetCurrent)&&(placeBetCheck.get(placeBetCurrent)==null||
+                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetCurrent)))){
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("+12406247881"),
-                    placeBetCurrent).create();
+                    placeBetCurrent.toString()).create();
 
+/*
 
             Message message2 = Message.creator(new PhoneNumber("7037856222"),
                     new PhoneNumber("+12406247881"),
-                    placeBetCurrent).create();
+                    placeBetCurrent.toString()).create();
 
+*/
 
-
-            placeBetCheck.put(placeBetCurrent,LocalDateTime.now().plusMinutes(10));
+            placeBetCheck.put(placeBetCurrent.toString(),LocalDateTime.now().plusMinutes(10));
 
             System.out.println(message.getSid());
 
         }
-        if(placeBetFuture!=null&&!placeBetCheck.containsKey(placeBetFuture)&&placeBetCheck.get(placeBetFuture)!=null &&
-                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetFuture))){
+        if(placeBetFuture.size()>0&&!placeBetCheck.containsKey(placeBetFuture)&&(placeBetCheck.get(placeBetFuture)==null ||
+                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetFuture)))){
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("+12406247881"),
-                    placeBetFuture).create();
-
+                    placeBetFuture.toString()).create();
+/*
             Message message2 = Message.creator(new PhoneNumber("7037856222"),
                     new PhoneNumber("+12406247881"),
-                    placeBetFuture).create();
+                    placeBetFuture.toString()).create();
+                    */
 
 
-            placeBetCheck.put(placeBetFuture,LocalDateTime.now().plusMinutes(10));
+            placeBetCheck.put(placeBetFuture.toString(),LocalDateTime.now().plusMinutes(10));
 
 
             System.out.println(message.getSid());

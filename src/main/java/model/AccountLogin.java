@@ -18,6 +18,11 @@ public class AccountLogin {
 
             //First login. Take the cookies
 
+            Connection.Response loginForm = Jsoup.connect(loginUrl)
+                    .validateTLSCertificates(false)
+                    .method(Connection.Method.GET)
+                    .execute();
+
             Connection.Response res = Jsoup
                     .connect(loginUrl)
                     .validateTLSCertificates(false)
