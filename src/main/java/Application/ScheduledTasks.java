@@ -31,8 +31,8 @@ public class ScheduledTasks {
         placeBetFuture=scrapeGames.scrapeFutureGames();
 
 
-        if(placeBetCurrent.size()>0&&!placeBetCheck.containsKey(placeBetCurrent)&&(placeBetCheck.get(placeBetCurrent)==null||
-                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetCurrent)))){
+        if(placeBetCurrent.size()>0&&!placeBetCheck.containsKey(placeBetCurrent.toString())&&(placeBetCheck.get(placeBetCurrent.toString())==null||
+                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetCurrent.toString())))){
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("+12406247881"),
                     placeBetCurrent.toString()).create();
@@ -50,8 +50,8 @@ public class ScheduledTasks {
             System.out.println(message.getSid());
 
         }
-        if(placeBetFuture.size()>0&&!placeBetCheck.containsKey(placeBetFuture)&&(placeBetCheck.get(placeBetFuture)==null ||
-                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetFuture)))){
+        if(placeBetFuture.size()>0&&!placeBetCheck.containsKey(placeBetFuture.toString())&&(placeBetCheck.get(placeBetFuture.toString())==null ||
+                LocalDateTime.now().isAfter(placeBetCheck.get(placeBetFuture.toString())))){
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("+12406247881"),
                     placeBetFuture.toString()).create();
