@@ -299,25 +299,25 @@ public class WebScraper {
             for(Event nbaGame: nbaList){
                 nbaGame.calcLowHigh();
                 if(nbaGame.placeBet().size()>0){
-                    bets.add("Check bets for " + nbaGame);
+                    bets.add("Check NBA bets for " + nbaGame);
                 }
             }
             for(Event nflGame: nflList){
                 nflGame.calcLowHigh();
                 if(nflGame.placeBet().size()>0){
-                    bets.add("Check bets for "+nflGame);
+                    bets.add("Check NFL bets for "+nflGame);
                 }
             }
             for(Event hockeyGame: hockeyList){
                 hockeyGame.calcLowHigh();
                 if(hockeyGame.placeBet().size()>0){
-                    bets.add("Checks bets for "+hockeyGame);
+                    bets.add("Checks NHL bets for "+hockeyGame);
                 }
             }
             for(Event colGame: collegeList){
                 colGame.calcLowHigh();
                 if(colGame.placeBet().size()>0){
-                    bets.add("Checks bets for "+ colGame);
+                    bets.add("Checks NCAA Basketball bets for "+ colGame);
                 }
             }
 
@@ -594,13 +594,13 @@ public class WebScraper {
       for(Event hockeyGame: hockeyList){
           hockeyGame.calcLowHigh();
           if(hockeyGame.placeBet().size()>0){
-              bets.add("Checks College Basketball bets for "+hockeyGame);
+              bets.add("Check College Basketball bets for "+hockeyGame);
           }
       }
       for(Event colGame: collegeList){
           colGame.calcLowHigh();
           if(colGame.placeBet().size()>0){
-              bets.add("Checks NHL bets for "+ colGame);
+              bets.add("Check NHL bets for "+ colGame);
           }
       }
 
