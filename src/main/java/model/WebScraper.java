@@ -17,7 +17,7 @@ public class WebScraper {
     Elements upcomingNBA= new Elements();
     Elements upcomingHockey= new Elements();
     Elements upcomingColBall= new Elements();
-    ArrayList<String>bets= new ArrayList<String>();
+
 
     String url="";
     Document doc;
@@ -60,6 +60,7 @@ public class WebScraper {
         Event nflEvent=null;
         Event hockeyEvent=null;
         Event colBballEvent=null;
+        ArrayList<String>bets= new ArrayList<String>();
 
 
         ArrayList<Event>nflList= new ArrayList<>();
@@ -340,6 +341,7 @@ public class WebScraper {
         Event nflEvent=null;
         Event hockeyEvent=null;
         Event colBballEvent=null;
+        ArrayList<String>bets= new ArrayList<String>();
 
 
         ArrayList<Event>nflList= new ArrayList<>();
