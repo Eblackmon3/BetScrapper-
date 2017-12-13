@@ -37,13 +37,13 @@ public class ScheduledTasks {
                     new PhoneNumber("+12406247881"),
                     placeBetCurrent.toString()).create();
 
-/*
+
 
             Message message2 = Message.creator(new PhoneNumber("7037856222"),
                     new PhoneNumber("+12406247881"),
                     placeBetCurrent.toString()).create();
 
-*/
+
 
             placeBetCheck.put(placeBetCurrent.toString(),LocalDateTime.now().plusMinutes(10));
 
@@ -55,11 +55,11 @@ public class ScheduledTasks {
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("+12406247881"),
                     placeBetFuture.toString()).create();
-/*
+
             Message message2 = Message.creator(new PhoneNumber("7037856222"),
                     new PhoneNumber("+12406247881"),
                     placeBetFuture.toString()).create();
-                    */
+
 
 
             placeBetCheck.put(placeBetFuture.toString(),LocalDateTime.now().plusMinutes(10));
