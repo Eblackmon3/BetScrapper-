@@ -83,7 +83,7 @@ public class ScheduledTasks {
     @Scheduled(cron="0 * * * * *")
     public void keepServerRunning(){
         try {
-            URL url = new URL("http://example.com");
+            URL url = new URL("https://run-scraper.herokuapp.com/");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.disconnect();
