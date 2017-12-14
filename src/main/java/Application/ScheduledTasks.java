@@ -7,6 +7,8 @@ import model.WebScraper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -77,6 +79,20 @@ public class ScheduledTasks {
     public void clearMap(){
         placeBetCheck.clear();
     }
+
+    @Scheduled(cron="0 * * * * *")
+    public void keepServerRunning(){
+        try {
+            URL url = new URL("http://example.com");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
 }

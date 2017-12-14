@@ -594,13 +594,13 @@ public class WebScraper {
       for(Event hockeyGame: hockeyList){
           hockeyGame.calcLowHigh();
           if(hockeyGame.placeBet().size()>0){
-              bets.add("Check College Basketball bets for "+hockeyGame);
+              bets.add("Check NHL bets for "+hockeyGame);
           }
       }
       for(Event colGame: collegeList){
           colGame.calcLowHigh();
           if(colGame.placeBet().size()>0){
-              bets.add("Check NHL bets for "+ colGame);
+              bets.add("Check NCAA Basketball bets for "+ colGame);
           }
       }
 
