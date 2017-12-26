@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c234b6d-0d88-472e-9c21-c7785a77c658" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" afterPath="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" />
-    </list>
+    <list default="true" id="0c234b6d-0d88-472e-9c21-c7785a77c658" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
